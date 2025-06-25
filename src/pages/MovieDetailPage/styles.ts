@@ -90,7 +90,7 @@ export const ActionButtons = styled.div`
 
 export const FavoriteButton = styled(Button)<{ isFavorite: boolean }>`
   background: ${({ isFavorite, theme }) => 
-    isFavorite ? theme.error : `linear-gradient(135deg, ${theme.primary} 0%, ${theme.secondary} 100%)`
+    isFavorite ? theme.error : theme.primary
   };
   color: white;
   border: none;
@@ -98,12 +98,10 @@ export const FavoriteButton = styled(Button)<{ isFavorite: boolean }>`
   display: flex;
   align-items: center;
   gap: 8px;
-
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px ${({ isFavorite, theme }) => 
-      isFavorite ? 'rgba(255, 71, 87, 0.4)' : 'rgba(102, 126, 234, 0.4)'
-    };
+  transform: scale(1);
+  
+  &:active {
+    transform: scale(0.98);
   }
 `;
 
@@ -182,12 +180,6 @@ export const CastCard = styled.div`
   padding: 16px;
   text-align: center;
   box-shadow: 0 4px 12px ${({ theme }) => theme.shadow};
-  transition: all 0.3s ease;
-
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px ${({ theme }) => theme.shadow};
-  }
 `;
 
 export const CastImage = styled.img`
@@ -222,13 +214,7 @@ export const VideoCard = styled.div`
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 12px ${({ theme }) => theme.shadow};
-  transition: all 0.3s ease;
   cursor: pointer;
-
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px ${({ theme }) => theme.shadow};
-  }
 `;
 
 export const VideoThumbnail = styled.div<{ imageUrl: string }>`
